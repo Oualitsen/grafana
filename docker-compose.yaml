@@ -16,6 +16,7 @@ services:
       - ./promtail.yaml:/etc/promtail/promtail.yaml
       - /var/log/retailapps-dev:/var/log/retailapps-dev
       - /var/log/retailapps-prod:/var/log/retailapps-prod
+      - /var/log/optidial-dev:/var/log/optidial-dev
     command: -config.file=/etc/promtail/promtail.yaml
     depends_on:
       - loki
