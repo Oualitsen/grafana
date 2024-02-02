@@ -20,7 +20,7 @@ services:
     depends_on:
       - loki
   grafana:
-    image: grafana/grafana:latest
+    image: grafana/grafana:10.3.1
     container_name: grafana
     restart: unless-stopped
     depends_on:
@@ -34,7 +34,7 @@ services:
       - GF_SERVER_ROOT_URL=https://grafana.retailapps.pro
     volumes:
       - grafana-storage:/var/lib/grafana
-      - ./config/grafana-datasources.yml:/root/grafana/grafana-datasources.yml
+      - ./datasources:/etc/grafana/provisioning/datasources
     depends_on:
       - loki
       - promtail
