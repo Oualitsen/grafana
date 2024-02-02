@@ -1,0 +1,34 @@
+server:
+  http_listen_port: 9080
+  grpc_listen_port: 0
+
+positions:
+  filename: /var/lib/promtail/positions.yaml
+
+clients:
+  - url: http://loki:3100/loki/api/v1/push
+
+scrape_configs:
+  - job_name: retailapps-dev
+    static_configs:
+    - targets:
+        - localhost
+      labels:
+        job: app-dev-logs
+        __path__: "/var/log/retailapps-dev/app-*.log"
+
+  - job_name: retailapps-prod
+    static_configs:
+    - targets:
+        - localhost
+      labels:
+        job: app-prod-logs
+        __path__: "/var/log/retailapps-prod/app-*.log"
+
+  - job_name: optidial
+    static_configs:
+    - targets:
+        - localhost
+      labels:
+        job: app-optidial-logs
+        __path__: "/var/log/optidial-dev/app-*.log"

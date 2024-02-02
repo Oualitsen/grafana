@@ -1,0 +1,42 @@
+version: '3'
+
+services:
+  loki:
+    image: grafana/loki:latest
+    volumes:
+      - ./loki-config.yaml:/etc/loki/local-config.yaml
+    ports:
+      - "3100:3100"
+    command: -config.file=/etc/loki/local-config.yaml
+    restart: unless-stopped
+  promtail:
+    image:  grafana/promtail:2.8.4
+    container_name: promtail
+    volumes:
+      - ./promtail.yaml:/etc/promtail/promtail.yaml
+      - /var/log/retailapps-dev:/var/log/retailapps-dev
+      - /var/log/retailapps-prod:/var/log/retailapps-prod
+    command: -config.file=/etc/promtail/promtail.yaml
+    depends_on:
+      - loki
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana
+    restart: unless-stopped
+    depends_on:
+      - loki
+      - promtail
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+      - GF_SERVER_ROOT_URL=https://grafana.retailapps.pro
+    volumes:
+      - grafana-storage:/var/lib/grafana
+      - ./config/grafana-datasources.yml:/root/grafana/grafana-datasources.yml
+    depends_on:
+      - loki
+      - promtail
+volumes:
+  grafana-storage:
