@@ -9,6 +9,14 @@ clients:
   - url: http://loki:3100/loki/api/v1/push
 
 scrape_configs:
+  - job_name: optidial
+    static_configs:
+    - targets:
+        - loki
+      labels:
+        job: optidial-logs
+        __path__: "/var/log/optidial/app-*.log"
+        
   - job_name: retailapps-dev
     static_configs:
     - targets:
@@ -25,11 +33,5 @@ scrape_configs:
         job: app-prod-logs
         __path__: "/var/log/retailapps-prod/app-*.log"
 
-  - job_name: optidial
-    static_configs:
-    - targets:
-        - loki
-      labels:
-        job: optidial-logs
-        __path__: "/var/log/optidial/app-*.log"
+
   
