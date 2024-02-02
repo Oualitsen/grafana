@@ -1,12 +1,12 @@
 pipeline {
-    angent any
+    agent any
 
     stages {
         stage("Clone project") {
             steps {
                 echo "Cloning project ..."
 
-                git branch: "${params.BRANCH}",  url: 'git@github.com:retailapps/futuretail-switch-backend.git'
+                git branch: "main", url: 'git@github.com:retailapps/futuretail-switch-backend.git'
             }
         }
 
