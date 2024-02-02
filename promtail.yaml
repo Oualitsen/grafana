@@ -27,5 +27,5 @@ scrape_configs:
         - loki
       labels:
         job: optidial-logs
-        __path__: "/var/log/optidial/app-*.log"
+        __path__: "/var/log/optidial-dev/app-*.log"
 
