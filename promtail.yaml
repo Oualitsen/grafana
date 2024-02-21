@@ -28,4 +28,14 @@ scrape_configs:
       labels:
         job: optidial-logs
         __path__: "/var/log/optidial-dev/app-*.log"
+    - targets:
+        - loki
+      labels:
+        job: recs-embedings-logs
+        __path__: "/var/log/recs-embedings/*.log"
+    - targets:
+        - loki
+      labels:
+        job: recs--dev-logs
+        __path__: "/var/log/recs-dev/*.log"
 
