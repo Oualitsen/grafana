@@ -44,5 +44,5 @@ scrape_configs:
     - targets:
         - loki
       labels:
-        job: recs--dev-logs
+        job: patrimony
         __path__: "/var/log/patrimony-dev/*.log"
