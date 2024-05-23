@@ -40,7 +40,8 @@ scrape_configs:
       labels:
         job: recs--dev-logs
         __path__: "/var/log/recs-dev/*.log"
-        
+  - job_name: patrimony-app-logs
+    static_configs:      
     - targets:
         - loki
       labels:
