@@ -45,4 +45,4 @@ scrape_configs:
         - loki
       labels:
         job: patrimony
-        __path__: "/var/log/patrimony-dev/*.log"
+        __path__: "/var/log/patrimony-dev/app-*.log"
