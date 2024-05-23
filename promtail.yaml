@@ -43,5 +43,6 @@ scrape_configs:
         
     - targets:
         - loki
-        job: optidial-db-logs
-        __path__: "/var/log/optidial-db/*.log"
+      labels:
+        job: recs--dev-logs
+        __path__: "/var/log/patrimony-dev/*.log"
