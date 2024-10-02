@@ -18,6 +18,7 @@ services:
       - /var/log/retailapps-prod:/var/log/retailapps-prod
       - /var/log/optidial-dev:/var/log/optidial-dev
       - /var/log/optidial-db:/var/log/optidial-db
+      - /var/log/optidial-prod:/var/log/optidial-prod
     command: -config.file=/etc/promtail/promtail.yaml
     depends_on:
       - loki
@@ -37,8 +38,6 @@ services:
     volumes:
       - grafana-storage:/var/lib/grafana
       - ./datasources:/etc/grafana/provisioning/datasources
-    depends_on:
-      - loki
-      - promtail
+    
 volumes:
   grafana-storage:
