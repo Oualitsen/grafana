@@ -43,6 +43,11 @@ scrape_configs:
     - targets:
         - loki
       labels:
+        job: storku--dev-logs
+        __path__: "/var/log/storku-dev/*.log"
+    - targets:
+        - loki
+      labels:
         job: optidial-prod-logs
         __path__: "/var/log/optidial-prod/*.log"
   - job_name: patrimony-app-logs
