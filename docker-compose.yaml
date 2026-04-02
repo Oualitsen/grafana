@@ -13,6 +13,7 @@ services:
   promtail:
     image:  grafana/promtail:2.8.4
     container_name: promtail
+    restart: unless-stopped
     volumes:
       - ./promtail.yaml:/etc/promtail/promtail.yaml
       - /var/log/:/var/log/
