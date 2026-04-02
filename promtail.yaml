@@ -32,33 +32,26 @@ scrape_configs:
     - targets:
         - loki
       labels:
-        job: recs-embedings-logs
-        __path__: "/var/log/recs-embedings/*.log"
+        job: recs-embeddings-logs
+        __path__: "/var/log/recs-embeddings/*.log"
 
     - targets:
         - loki
       labels:
-        job: recs--dev-logs
+        job: recs-dev-logs
         __path__: "/var/log/recs-dev/*.log"
     - targets:
         - loki
       labels:
-        job: storku--dev-logs
+        job: storku-dev-logs
         __path__: "/var/log/storku-dev/*.log"
     - targets:
         - loki
       labels:
         job: dentilynx-dev-logs
-        __path__: "/var/log/dentlynx-dev/*.log"
+        __path__: "/var/log/dentilynx-dev/*.log"
     - targets:
         - loki
       labels:
         job: optidial-prod-logs
         __path__: "/var/log/optidial-prod/*.log"
-  - job_name: patrimony-app-logs
-    static_configs:      
-    - targets:
-        - loki
-      labels:
-        job: patrimony
-        __path__: "/var/log/patrimony-dev/app-*.log"

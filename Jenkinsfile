@@ -12,14 +12,14 @@ pipeline {
 
         stage("Stopping current instance") {
             steps {
-                echo "Cloning project ..."  
+                echo "Stopping current instance ..."
                 sh "make stop"
             }
         }
 
         stage("Starting new instance") {
             steps {
-                echo "Cloning project ..."  
+                echo "Starting new instance ..."
                 sh "make start"
             }
         }
