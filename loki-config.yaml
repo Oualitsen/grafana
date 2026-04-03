@@ -32,6 +32,9 @@ storage_config:
   filesystem:
     directory: /loki/chunks
 
+query_range:
+  parallelise_shardable_queries: false
+
 limits_config:
   retention_period: 375h
   enforce_metric_name: false
@@ -49,3 +52,4 @@ limits_config:
   max_label_value_length: 20480
   max_label_name_length: 10240
   max_label_names_per_series: 300
+  max_outstanding_requests_per_tenant: 2048
